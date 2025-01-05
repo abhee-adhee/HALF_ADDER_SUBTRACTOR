@@ -49,35 +49,44 @@ Figure -02 HALF Subtractor
 
 
 **Program:**
-```
-module exp3(a,b,sum,carry);
-input a,b;
-output sum,carry;
-assign sum= (a ^ b);
-assign carry= ( a & b);
-endmodule
-
-module exp3(a,b,difference,borrow);
-input a,b;
-output difference,borrow;
-assign difference= (a ^ b);
-assign borrow= ( ~a & b);
-endmodule
-```
 
 /* Program to design a half adder and full adder circuit and verify its truth table in quartus using Verilog programming.
 
 Developed by:S Abinav Aaditya
-register : 24002354
+RegisterNumber:24002354
 
-**RTL Schematic**
-![IMG-20241126-WA0024](https://github.com/user-attachments/assets/05d69ed9-f8e1-452a-8fac-9f17188bce7d)
-![IMG-20241203-WA0002](https://github.com/user-attachments/assets/d45ea2ac-a441-4c8b-84ba-3cde0fda956f)
+**half_adder**
+```
+module half_adder(a,b,sum,carry);
+input a,b;
+output sum,carry; 
+assign sum = a^b;
+assign carry = a & b;
+endmodule
+```
 
-**Output/TIMING Waveform**
-![IMG-20241126-WA0025](https://github.com/user-attachments/assets/46454940-0d71-4a0b-ac3c-2e73f92cfb70)
+**half_subtractor:**
 
-![IMG-20241203-WA0003](https://github.com/user-attachments/assets/017e6765-01b5-41da-87a3-f200a6d7c072)
+```
+module halfsub_top(a,b,D,Bo);
+input a,b;
+output D,Bo; // Outputs sum and carry for half adder:Outputs difference D,Borrow Bo for half subtractor
+assign D = a ^ b;
+  assign Bo = ~a & b;
+endmodule
+```
+
+**output:**
+
+**half_adder**
+![WhatsApp Image 2024-03-22 at 13 16 08_dd7f7392](https://github.com/Priya-dharshini-Raja/HALF_ADDER_SUBTRACTOR/assets/148514803/7aa69130-91c3-4210-b79e-6f9e04396259)
+
+**half_subtractor:**
+![WhatsApp Image 2024-03-22 at 13 16 30_d3421b6a](https://github.com/Priya-dharshini-Raja/HALF_ADDER_SUBTRACTOR/assets/148514803/e539685c-c31d-4421-92e7-19000bbff281)
+
+TRUTH TABLE
+![image](https://github.com/user-attachments/assets/30be2d3a-09dd-495f-a403-6509ed676a3a)
+![image](https://github.com/user-attachments/assets/43c404e5-3325-4493-b9eb-0fcf6f66618e)
 
 **Result:**
-Thus the given logic functions are implemented using and their operations are verified using Verilog programming.
+It is Verfied Successfully.
